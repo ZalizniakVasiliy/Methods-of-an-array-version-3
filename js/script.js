@@ -52,7 +52,8 @@ console.log(arr.indexOf(5, -14)); //2
 /* ----------------------- function lastIndexOf() ---------------------------- */
 
 const arr = [2, 13, 7, 18, 5, 8, 6, 8, 6, 5, 9, 13, 9, 7, 18];
-function lastIndexOf(searchElem, fromIndex = array.length, array) {
+function lastIndexOf(searchElem, fromIndex = null, array) {
+  fromIndex === null ? (fromIndex = array.length - 1) : null;
   if (fromIndex >= 0) {
     for (let i = fromIndex; i >= 0; i--) {
       if (searchElem === array[i]) {
