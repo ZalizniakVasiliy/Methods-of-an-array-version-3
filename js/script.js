@@ -120,38 +120,53 @@ console.log(findIndex(arr, (item) => item > 2 && item < 43));
 /* ------------------------- function includes() ------------------------------ */
 
 const arr = [2, -3, 5, 8, NaN, 6, 5, -3, 13];
-function includes(searchElem, fromIndex = 0, array) {
+function includes(searchElem, fromIndex = null, array) {
+  fromIndex === null ? (fromIndex = 0) : null;
   if (fromIndex >= array.length) {
     return false;
   } else if (fromIndex >= 0 && fromIndex < array.length) {
     for (let i = fromIndex; i < array.length; i++) {
-      if (searchElem === array[i] || isNaN(array[i])) {
+      if (
+        searchElem === array[i] ||
+        (Number.isNaN(array[i]) && Number.isNaN(searchElem))
+      ) {
         return true;
       }
     }
     return false;
   } else if (fromIndex < 0) {
     for (let i = array.length + fromIndex; i < array.length; i++) {
-      if (searchElem === array[i] || isNaN(array[i])) {
+      if (
+        searchElem === array[i] ||
+        (Number.isNaN(array[i]) && Number.isNaN(searchElem))
+      ) {
         return true;
       }
     }
     return false;
   }
 }
+console.log(includes(2, 1, arr)); //false
+console.log(includes(2, 0, arr)); //true
+console.log(includes(2, null, arr)); //true
 console.log(includes(NaN, null, arr)); //true
-console.log(includes(NaN, -100, arr)); //true
+console.log(arr.includes(NaN)); // true
 console.log(includes(NaN, 5, arr)); //false
-console.log(includes(NaN, 0, arr)); //true
+console.log(arr.includes(NaN, 5)); //false
+console.log(includes(NaN, 4, arr)); // true
+console.log(arr.includes(NaN, 4)); // true
 console.log(includes(NaN, -4, arr)); //false
-console.log(includes(NaN, -5, arr)); //true
-console.log(includes(-3, -100, arr)); //true
+console.log(arr.includes(NaN, -4)); //false
+console.log(includes(NaN, -5, arr)); // true
+console.log(arr.includes(NaN, -5)); // true
+console.log(includes(NaN, -100, arr)); // true
+console.log(includes(-3, -100, arr)); // true
 console.log(includes(-3, 10, arr)); //false
-console.log(includes(2, -9, arr)); //true
-console.log(includes(-3, -2, arr)); //true
+console.log(includes(2, -9, arr)); // true
+console.log(includes(-3, -2, arr)); // true
 console.log(includes(-3, -1, arr)); //false
-console.log(includes(-3, 0, arr)); //true
-console.log(includes(-3, 7, arr)); //true
+console.log(includes(-3, 0, arr)); // true
+console.log(includes(-3, 7, arr)); // true
 console.log(includes(-3, 8, arr)); //false
 
 /* ------------------------- function every() -------------------------------- */
