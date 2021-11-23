@@ -1,7 +1,8 @@
 /* --------------------------- function indexOf()----------------------------- */
 
 const arr = [2, -3, 5, 8, 6, 8, 17, 5, 15, 13, 9, 7, 18];
-function indexOf(searchElem, fromIndex = 0, array) {
+function indexOf(searchElem, fromIndex = null, array) {
+  fromIndex === null ? (fromIndex = 0) : null;
   if (fromIndex >= array.length) {
     return -1;
   } else if (fromIndex >= 0) {
@@ -19,6 +20,7 @@ function indexOf(searchElem, fromIndex = 0, array) {
   }
   return -1;
 }
+console.log(indexOf(2, null, arr)); //0
 console.log(indexOf(-3, null, arr)); //1
 console.log(indexOf(5, -100, arr)); //2
 console.log(indexOf(5, 100, arr)); //-1
@@ -35,6 +37,7 @@ console.log(indexOf(5, -14, arr)); //2
 
 console.log(`------------------------------------------------`); //
 
+console.log(arr.indexOf(2)); //0
 console.log(arr.indexOf(-3, null)); //1
 console.log(arr.indexOf(5, -100)); //2
 console.log(arr.indexOf(5, 100)); //-1
